@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 :root {
-    --font: "Helvetica Neue", Arial, sans-serif;
+    --font: "Open Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
@@ -314,7 +316,7 @@ h6 {
     padding-top: 0;
     margin-bottom: 1.45rem;
     color: inherit;
-    font-family:var(--font);
+    font-family: var(--font);
     font-weight: bold;
     text-rendering: optimizeLegibility;
     font-size: 0.78405rem;
@@ -617,4 +619,9 @@ pre tt:after {
     html {
         font-size: 100%;
     }
+}
+
+.tour ul {
+    padding: 0;
+    margin-bottom: 0;
 }

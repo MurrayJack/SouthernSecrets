@@ -1,9 +1,9 @@
 import React from "react"
 import Layout from "../components/layout"
-const BlockContent = require("@sanity/block-content-to-react")
+import BlockContent from "@sanity/block-content-to-react"
 
 const TourTemplate = ({ pageResources }) => {
-    if (!pageResources) return <div>?</div>
+    if (!pageResources) return <div></div>
 
     const {
         json: {
@@ -11,38 +11,19 @@ const TourTemplate = ({ pageResources }) => {
         },
     } = pageResources
 
-    const buildStyles = marks => {
-        const style = {}
-
-        if (marks.filter(e => e === "strong").length > 0) {
-            style.fontWeight = "bold"
-        }
-
-        return style
-    }
-
     const serializers = {
         types: {
-            localeText: props => (
-                <span>
-                    {props.node.en.map(e => (
-                        <p>
-                            {e.children.map(t => (
-                                <span style={buildStyles(t.marks)}>
-                                    {t.text}
-                                </span>
-                            ))}
-                        </p>
-                    ))}
-                </span>
-            ),
+            localeText: props =>
+                props.node.en.map(e => (
+                    <BlockContent blocks={e} serializers={serializers} />
+                )),
         },
     }
 
     return (
         <>
             <Layout>
-                <article>
+                <article className="tour">
                     <h2>{tour.title}</h2>
 
                     <section>
@@ -56,7 +37,16 @@ const TourTemplate = ({ pageResources }) => {
 
                         <div>
                             <h3>Photos</h3>
-                            {/* <pre>{JSON.stringify(tour, undefined, 2)}</pre> */}
+                            <div className="photo-wrapper">
+                                {tour.images.map(e => (
+                                    <img
+                                        alt=""
+                                        height="100"
+                                        width="200"
+                                        srcSet={e.asset.fluid.srcSet}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </section>
 
@@ -71,17 +61,32 @@ const TourTemplate = ({ pageResources }) => {
             </Layout>
 
             <style jsx>{`
+                h2 {
+                }
+
                 article {
                     width: 920px;
                     margin: 0 auto;
                     padding-top: 40px;
                     display: grid;
                     grid-gap: 40px;
+                    margin-bottom: 80px;
                 }
 
                 section {
                     display: grid;
-                    grid-template-columns: 40% 60%;
+                    grid-template-columns: 1fr auto;
+                    grid-gap: 40px;
+                }
+
+                .photo-wrapper {
+                    display: grid;
+                    grid-gap: 16px;
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                img {
+                    margin-bottom: 0;
                 }
             `}</style>
         </>

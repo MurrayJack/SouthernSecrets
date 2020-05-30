@@ -15,7 +15,7 @@ exports.createPages = async ({ graphql, actions }) => {
                     title
                     images {
                         asset {
-                            fixed(width: 230) {
+                            fluid(maxWidth: 230) {
                                 srcSet
                             }
                         }

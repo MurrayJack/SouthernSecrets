@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 const Nav = () => {
+    const [visible, setVisible] = useState(false)
+
     const data = useStaticQuery(graphql`
         query {
             placeholderImage: file(relativePath: { eq: "logo.png" }) {
@@ -13,7 +15,10 @@ const Nav = () => {
                 }
             }
 
-            allSanityTour(sort: { fields: title, order: ASC }) {
+            allSanityTour(
+                sort: { fields: title, order: ASC }
+                filter: { active: { eq: true } }
+            ) {
                 nodes {
                     title
                 }
@@ -33,20 +38,28 @@ const Nav = () => {
 
                     <div>About</div>
                     <div>
-                        <a href="#">Our Tours</a>
+                        <button
+                            onPointerOver={() => setVisible(true)}
+                            // onPointerOut={() => setVisible(false)}
+                        >
+                            Our Tours
+                        </button>
                         <ul>
-                            {data.allSanityTour.nodes.map(e => (
-                                <li>
-                                    <a
-                                        href={`/tours/${e.title
-                                            .toLowerCase()
-                                            .split(" ")
-                                            .join("_")}`}
-                                    >
-                                        {e.title}
-                                    </a>
-                                </li>
-                            ))}
+                            {data.allSanityTour.nodes.map(
+                                e =>
+                                    visible && (
+                                        <li>
+                                            <a
+                                                href={`/tours/${e.title
+                                                    .toLowerCase()
+                                                    .split(" ")
+                                                    .join("_")}`}
+                                            >
+                                                {e.title}
+                                            </a>
+                                        </li>
+                                    )
+                            )}
                         </ul>
                     </div>
 
@@ -76,6 +89,7 @@ const Nav = () => {
                     text-transform: uppercase;
                     font-weight: bold;
                     font-size: 14px;
+                    text-align: center;
                 }
 
                 ul {
@@ -88,10 +102,18 @@ const Nav = () => {
                 }
 
                 li {
-                    padding: 8px 24px;
+                    display: grid;
+                    align-items: center;
+                    margin: 0;
+                    text-align: left;
+                }
+
+                li > a {
+                    text-transform: capitalize;
                 }
 
                 a {
+                    padding: 8px 24px;
                     color: white;
                 }
             `}</style>
