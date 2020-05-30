@@ -3,6 +3,8 @@ import Layout from "../components/layout"
 const BlockContent = require("@sanity/block-content-to-react")
 
 const TourTemplate = ({ pageResources }) => {
+    if (!pageResources) return <div>?</div>
+
     const {
         json: {
             pageContext: { tour },

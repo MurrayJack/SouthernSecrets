@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     const result = await graphql(`
         {
-            allSanityTour(sort: { fields: title, order: ASC }) {
+            allSanityTour(sort: {fields: title, order: ASC}, filter: {active: {eq: true}}) {
                 nodes {
                     title
                     images {
