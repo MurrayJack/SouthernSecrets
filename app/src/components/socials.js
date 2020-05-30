@@ -1,19 +1,6 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 
 const Socials = () => {
-    // const data = useStaticQuery(graphql`
-    //     query Reviews {
-    //         allSanityReview {
-    //             nodes {
-    //                 name
-    //                 tour
-    //                 review
-    //             }
-    //         }
-    //     }
-    // `)
-
     return (
         <>
             <section>

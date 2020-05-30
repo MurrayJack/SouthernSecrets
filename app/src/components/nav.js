@@ -25,18 +25,30 @@ const Nav = () => {
         <>
             <section>
                 <nav>
-                    <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+                    <a href="/">
+                        <Img
+                            fluid={data.placeholderImage.childImageSharp.fluid}
+                        />
+                    </a>
 
                     <div>About</div>
                     <div>
-                        
-                        Our Tours
+                        <a href="#">Our Tours</a>
                         <ul>
-                            {data.allSanityTour.nodes.map(e=> <li>{e.title}</li>)}
+                            {data.allSanityTour.nodes.map(e => (
+                                <li>
+                                    <a
+                                        href={`/tours/${e.title
+                                            .toLowerCase()
+                                            .split(" ")
+                                            .join("_")}`}
+                                    >
+                                        {e.title}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
-                        
-                        
-                        </div>
+                    </div>
 
                     <div>Quote Request</div>
                     <div>Contact</div>
@@ -46,7 +58,7 @@ const Nav = () => {
 
             <style jsx>{`
                 section {
-                    background: black;
+                    background: #202020;
                 }
 
                 nav {
@@ -68,8 +80,19 @@ const Nav = () => {
 
                 ul {
                     position: absolute;
-                    z-index: 1
-                    
+                    z-index: 1;
+                    background-color: #202020;
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                }
+
+                li {
+                    padding: 8px 24px;
+                }
+
+                a {
+                    color: white;
                 }
             `}</style>
         </>
