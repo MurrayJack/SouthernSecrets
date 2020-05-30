@@ -6,31 +6,36 @@ const Footer = () => {
         query Footer {
             allSanityFooter {
                 nodes {
-                  title
-                  active
-                  image {
-                    asset {
-                      fixed(width: 230) {
-                        srcSet
-                      }
+                    title
+                    active
+                    image {
+                        asset {
+                            fixed(width: 230) {
+                                srcSet
+                            }
+                        }
                     }
-                  }
                 }
-              }
+            }
         }
     `)
 
     return (
         <>
             <section>
-                <div>
+                <article>
                     <ul>
-                        {data.allSanityFooter.nodes.map(e => <li>
-                            <img srcSet={e.image.asset.fixed.srcSet} aria-label={e.title}   />
-                            
-                        </li>)}
+                        {data.allSanityFooter.nodes.map(e => (
+                            <li>
+                                <img
+                                    srcSet={e.image.asset.fixed.srcSet}
+                                    aria-label={e.title}
+                                    alt=""
+                                />
+                            </li>
+                        ))}
                     </ul>
-                </div>
+                </article>
             </section>
 
             <style jsx>{`
@@ -38,7 +43,7 @@ const Footer = () => {
                     background: rgb(233, 234, 234);
                 }
 
-                div {
+                article {
                     width: 920px;
                     margin: 0 auto;
                 }
