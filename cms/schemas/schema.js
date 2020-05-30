@@ -14,6 +14,7 @@ import page from "./ss/page";
 import tour from "./ss/tour";
 import review from "./ss/review";
 import blog from "./ss/blog";
+import footer from "./ss/footer";
 
 import localeString from './locale/String'
 import localeText from './locale/Text'
@@ -38,6 +39,7 @@ export default createSchema({
     tour,
     review,
     blog,
+    footer,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

@@ -19,10 +19,18 @@ const Reviews = () => {
             <section>
                 <article>
                     <h2>Reviews</h2>
+                    <hr />
 
+                    <div>
+                        <button></button>
+                        <ul>
+                            {data.allSanityReview.nodes.map(e => <li>{e.name}</li>)}
+                        </ul>
+                        <button></button>
+                    </div>
+                    
 
-
-                    {JSON.stringify(data)}
+                    <hr />
                 </article>
             </section>
 
@@ -33,6 +41,19 @@ const Reviews = () => {
                 article {
                     width: 920px;
                     margin: 0 auto;
+                }
+
+                ul {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    display: flex;
+                    flex-wrap:  nowrap;
+                }
+
+                div {
+                    display: grid;
+                    grid-template-columns: 30px auto 30px;
                 }
             `}</style>
         </>

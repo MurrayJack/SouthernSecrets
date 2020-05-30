@@ -55,6 +55,7 @@ const Blogs = () => {
 
                 li {
                     border: 1px solid #ddd;
+                    height: 500px;
                 }
             `}</style>
         </>

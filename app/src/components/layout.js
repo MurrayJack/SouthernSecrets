@@ -41,6 +41,8 @@ const Layout = ({ children }) => {
                 main {
                     width: 920px;
                     margin: 0 auto;
+                    display: grid;
+                    grid-gap: 40px;
                 }
             `}</style>
         </>

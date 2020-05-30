@@ -3,26 +3,33 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 const Footer = () => {
-    // const data = useStaticQuery(graphql`
-    //     query Reviews {
-    //         allSanityReview {
-    //             nodes {
-    //                 name
-    //                 tour
-    //                 review
-    //             }
-    //         }
-    //     }
-    // `)
+    const data = useStaticQuery(graphql`
+        query Footer {
+            allSanityFooter {
+                nodes {
+                  title
+                  active
+                  image {
+                    asset {
+                      fixed(width: 230) {
+                        srcSet
+                      }
+                    }
+                  }
+                }
+              }
+        }
+    `)
 
     return (
         <>
             <section>
                 <div>
                     <ul>
-                        <li>Australia</li>
-                        <li>2</li>
-                        <li>3</li>
+                        {data.allSanityFooter.nodes.map(e => <li>
+                            <img srcSet={e.image.asset.fixed.srcSet} aria-label={e.title}   />
+                            
+                        </li>)}
                     </ul>
                 </div>
             </section>
@@ -35,6 +42,18 @@ const Footer = () => {
                 div {
                     width: 920px;
                     margin: 0 auto;
+                }
+
+                ul {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                }
+
+                img {
+                    width: 230px;
                 }
             `}</style>
         </>
