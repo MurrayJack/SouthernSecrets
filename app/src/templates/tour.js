@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import BlockContent from "@sanity/block-content-to-react"
+import SEO from "../components/seo"
 
 const TourTemplate = ({ pageResources }) => {
     if (!pageResources) return <div></div>
@@ -23,6 +24,8 @@ const TourTemplate = ({ pageResources }) => {
     return (
         <>
             <Layout>
+                <SEO title={tour.title} />
+
                 <article className="tour">
                     <h2>{tour.title}</h2>
 
