@@ -39,8 +39,6 @@ const Layout = ({ children }) => {
 
             <style jsx>{`
                 main {
-                    width: 920px;
-                    margin: 0 auto;
                     display: grid;
                     grid-gap: 40px;
                 }

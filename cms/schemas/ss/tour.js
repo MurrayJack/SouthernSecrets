@@ -1,131 +1,147 @@
 export default {
-    name: 'tour',
-    title: 'Tours',
-    type: 'document',
-    fields: [
-        {
-            name: 'title',
-            title: 'Title',
-            type: 'string'
-        },
-        {
-            name: 'heroImage',
-            title: 'Hero Image',
-            type: 'image',
-        },
-        {
-            name: 'images',
-            title: 'Images',
-            type: 'array',
-            of: [
-                {
-                    type: 'image',
-                    options: {
-                        hotspot: true
-                    }
-                }
-            ]
-        },
-        {
-            name: 'try',
-            type: 'array', 
-            of: [{type: 'block'}],
-        },
-        {
-            name: 'information',
-            title: 'Information',
-            type: 'localeText'
-        },
-        {
-            name: 'description',
-            title: 'Description',
-            type: 'localeText'
-        },
-        {
-            name: 'brochure',
-            title: 'Brochure',
-            type: 'localeString'
-        },
-        {
-            name: 'brochureUrl',
-            title: 'Brochure URL',
-            type: 'url'
-        },
-        
+  name: "tour",
+  title: "Tours",
+  type: "document",
+  fieldsets: [
+    {
+      name: "slider",
+      title: "Home Page: Slider",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+    {
+      name: "tour_images",
+      title: "Tour Photos",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+    {
+      name: "small_image",
+      title: "Home Page: Image",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+    {
+      name: "tour_details",
+      title: "Tour Details",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+    {
+      name: "tour_brochure",
+      title: "Tour Brochure",
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    },
+  ],
 
+  fields: [
+    {
+      name: "title",
+      title: "Title",
+      type: "string",
+    },
 
-        // {
-        //     name: 'slug',
-        //     title: 'Slug',
-        //     type: 'slug',
-        //     options: {
-        //         source: 'title',
-        //         maxLength: 96
-        //     }
-        // },
-        // {
-        //     title: 'Default variant',
-        //     name: 'defaultProductVariant',
-        //     type: 'productVariant'
-        // },
-        // {
-        //     title: 'Variants',
-        //     name: 'variants',
-        //     type: 'array',
-        //     of: [
-        //         {
-        //             title: 'Variant',
-        //             type: 'productVariant'
-        //         }
-        //     ]
-        // },
-        // {
-        //     title: 'Tags',
-        //     name: 'tags',
-        //     type: 'array',
-        //     of: [
-        //         {
-        //             type: 'string'
-        //         }
-        //     ],
-        //     options: {
-        //         layout: 'tags'
-        //     }
-        // },
-        // {
-        //     name: 'vendor',
-        //     title: 'Vendor',
-        //     type: 'reference',
-        //     to: { type: 'vendor' }
-        // },
-        // {
-        //     name: 'blurb',
-        //     title: 'Blurb',
-        //     type: 'localeString'
-        // },
-        // {
-        //     name: 'categories',
-        //     title: 'Categories',
-        //     type: 'array',
-        //     of: [
-        //         {
-        //             type: 'reference',
-        //             to: { type: 'category' }
-        //         }
-        //     ]
-        // },
-        // {
-        //     name: 'body',
-        //     title: 'Body',
-        //     type: 'localeBlockContent'
-        // }
-    ],
+    {
+      name: "active",
+      title: "Active",
+      type: "boolean",
+    },
 
-    preview: {
-        select: {
-            title: 'title',
-            // manufactor: 'manufactor.title',
-            // media: 'defaultProductVariant.images[0]'
-        }
-    }
-}
+    {
+      name: "homepage_active",
+      title: "Show On Homepage",
+      type: "boolean",
+      fieldset: "small_image",
+    },
+    {
+      name: "heroImage",
+      title: "Image",
+      type: "image",
+      fieldset: "small_image",
+    },
+
+    // slider
+    {
+      name: "slider_active",
+      title: "Show In Slider",
+      type: "boolean",
+      fieldset: "slider",
+    },
+    {
+      name: "slider_blurb",
+      title: "Blurb",
+      type: "array",
+      of: [{ type: "string" }],
+      fieldset: "slider",
+    },
+    {
+      name: "slider_image",
+      title: "Image",
+      type: "image",
+      fieldset: "slider",
+    },
+
+    // tour images
+    {
+      name: "images",
+      title: "Images",
+      type: "array",
+      fieldset: "tour_images",
+      of: [
+        {
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    },
+
+    // Tour Details
+    {
+      name: "information",
+      title: "Information",
+      type: "localeText",
+      fieldset: "tour_details",
+    },
+    {
+      name: "description",
+      title: "Description",
+      type: "localeText",
+      fieldset: "tour_details",
+    },
+
+    
+    {
+      name: "brochure",
+      title: "Brochure",
+      type: "localeString",
+      fieldset: "tour_brochure",
+    },
+    {
+      name: "brochureUrl",
+      title: "Brochure URL",
+      type: "url",
+      fieldset: "tour_brochure",
+    },
+
+  ],
+
+  preview: {
+    select: {
+      title: "title",
+      media: "heroImage",
+    },
+  },
+};

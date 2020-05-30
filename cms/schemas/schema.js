@@ -31,9 +31,9 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    product,
-    vendor,
-    category,
+    // product,
+    // vendor,
+    // category,
 
     page,
     tour,
