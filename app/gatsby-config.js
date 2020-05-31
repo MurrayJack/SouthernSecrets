@@ -32,7 +32,6 @@ module.exports = {
             options: {
                 projectId: "3gjhe9gq",
                 dataset: "production",
-                
 
                 // a token with read permissions is required
                 // if you have a private dataset
@@ -44,6 +43,16 @@ module.exports = {
             },
         },
         `gatsby-plugin-styled-jsx`,
+
+        {
+            resolve: `gatsby-source-shopify`,
+            options: {
+                // The domain name of your Shopify shop.
+                shopName: `murrayjacktest.myshopify.com`,
+                // The storefront access token
+                accessToken: `4cd291723baf64a3fbf344c067051436`,
+            },
+        },
 
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
